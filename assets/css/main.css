@@ -1,0 +1,265 @@
+@font-face {
+    font-family: 'Ubuntu';
+    src: url("fonts/Ubuntu/Ubuntu-Regular.ttf");
+}
+
+@font-face {
+    font-family: 'Poiret-One';
+    src: url("fonts/Poiret_One/PoiretOne-Regular.ttf");
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-family: 'Poiret-One';
+    width: 100vw;
+    
+}
+
+.header{
+    width: 100vw;
+    font-size: 100px;
+    color: black;
+    text-align: right;
+    padding: 0;
+}
+
+.logo_main{
+    width: 100px;
+    height: auto;
+    margin-right: 30px;
+    margin-top: 10px;
+}
+
+.navigation{
+    width: 100vw;
+    text-align: center;
+    margin-top: 10px;
+    font-size: 30px;
+}
+
+.nav_li{
+    display: inline;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+.nav_li:hover{
+    display: inline;
+    margin-right: 20px;
+    margin-left: 20px;
+    transition: 0.5s;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+.about_us{
+    background: url("../img/city_main.jpg") no-repeat round;
+    background-size: 100vw;
+    width: 100%;
+    height: 700px;
+    margin-top: 20px;
+    border: none;
+    margin-left: 0;
+    margin-right: 0;
+    color: #fff;
+    padding: 0;
+}
+
+.who_we_are{
+    position: relative;
+    font-size: 50px;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 20px;
+    margin: 0;
+}
+
+.about1{
+    width: 60%;
+    font-size: 30px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+}
+
+.about2{
+    width: 60%;
+    font-size: 30px;
+    text-align: center;
+    margin: 60px auto 40px;
+}
+
+.content{
+    margin: 0px;
+    padding: 0px;
+}
+
+hr{
+    width: 500px;
+    height: 4px;
+    color: #fff;
+    background-color: #fff;
+    border-radius: 5px; 
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+}
+
+.requests{
+    width: 800px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.request{
+    display: inline-block;
+    width: 390px;
+    margin-top: 20px;
+}
+
+.image{
+    height: 300px;
+    width: 300px;
+    display: inline-block;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.image img{
+    height: 300px;
+    width: 300px;
+    display: inline-block;
+    position: absolute;
+    -moz-transition: all 0.8s ease-in-out;
+    -webkit-transition: all 0.8s ease-in-out;
+    -o-transition: all 0.8s ease-in-out;
+    transition: all 0.8s ease-in-out;
+    object-fit: contain;
+    background: #ffffff;
+}
+
+.image img.orig, .image:hover img.orig{
+    margin-top: 0px;
+}
+.image img.move_up{
+    margin-top: 300px;
+    position: relative;
+}
+.image:hover img.move_up{
+    margin-top: 0px;
+}
+
+.name{
+    font-size: 30px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+
+.request_counter{
+    width: max-content;
+    margin: 50px auto 30px;
+    text-align: center;
+    font-size: 30px;
+}
+
+.request_counter p{
+    border-bottom: 1.5px solid black;
+}
+
+.counter{
+    font-size: 40px;
+    font-weight: bold;
+}
+
+label{
+    font-weight: bold;
+}
+
+.form{
+    width: 400px;
+    font-size: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    text-align: center;
+}
+
+input{
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid grey;
+    font-family: 'Poiret-One';
+    font-size: 25px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+button{
+    font-family: 'Poiret-One';
+    margin-top: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 25px;
+    border: none;
+    border-bottom: 1px solid #000;
+    background-color: #d5d5d5;
+}
+
+button:hover{
+    background-color: #b4b4b4;
+    transition: 0.5s;
+}
+
+#reg_but{
+    width: 220px;
+    color: black;
+}
+
+#reg_form{
+    display: none;
+}
+
+.message{
+    color: red;
+    font-weight: bold;
+}
+
+textarea{
+    display: block;
+    width: 100%;
+    font-family: 'Poiret-One';
+    font-size: 25px;
+}
+
+select{
+    font-size: 20px;
+    font-family: 'Poiret-One';
+    border: 2px solid cornflowerblue;
+    border-radius: 3px;
+    transition: 0.6s;
+}
+
+@media screen and (max-width: 768px){
+    .requests{
+        width: 700px;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .request{
+        display: inline-block;
+        width: 590px;
+        margin-top: 20px;
+    }
+}
