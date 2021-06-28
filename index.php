@@ -1,16 +1,26 @@
 <?php
     session_start();
+    require_once 'vendor/connect.php';
+
+    $query = "SELECT COUNT(*) FROM `orders` WHERE `status`='Принято в работу'";
+
+    $res = mysqli_query($connect, $query);
+    $counter = mysqli_fetch_array($res);
+
+    require_once 'vendor/manage.php';
 ?>
 
 <!DOCTYPE html>
 <html xmlns:input="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <title>Design.pro</title>
     <link rel="stylesheet" href="assets/css/main.css">
     <script src="assets/scripts/main.js"> </script>
 </head>
-<body onload="request_counter()">
+<body>
     <div class="header">
         <a href="index.php">Design.pro</a>
         <img class="logo_main" src="assets/img/logo.png" alt="logo-main">
@@ -21,7 +31,14 @@
         <nav class="navigation">
             <ul>
                 <li class="nav_li">
-                    <a href="user.php">Профиль</a>
+                    <?php
+                        if($_SESSION['user']['status'] == 1){
+                            echo '<a href="user.php">Профиль</a>';
+                        }
+                        else if($_SESSION['user']['status'] == 10){
+                            echo '<a href="superadmin.php">Профиль</a>';
+                        }
+                    ?>
                 </li>
                 <li class="nav_li">
                     <a href="make_order.php"> Сделать заказ </a>
@@ -50,8 +67,20 @@
             </div>
         </div>
 
+
         <div class="requests">
+            <?php $posts = show_on_index_page(); ?>
+            <?php foreach ($posts as $post): ?>
             <div class="request">
+                <div class="name"> <?= $post['title'] ?></div>
+                <div class="date"> <?= $post['date'] ?></div>
+                <div class="image">
+                    <img class="orig" src="<?= $post['photo'] ?>" alt="квартира с балконом">
+                    <img class="move_up" src="<?= $post['design'] ?>" alt="квартира с балконом">
+                </div>
+            </div>
+            <?php endforeach;?>
+            <!--<div class="request">
                 <div class="name"> Квартира с балконом</div>
                 <div class="date"> 01.05.2021</div>
                 <div class="image">
@@ -83,13 +112,15 @@
                      <img class="orig" src="assets/img/classic.jpg" alt="квартира в классическом стиле">
                      <img class="move_up" src="assets/img/uuik.jpg" alt="квартира в классическом стиле">
                  </div>
-             </div>
+             </div>-->
 
          </div>
 
          <div class="request_counter">
              <p>Всего выполнено заказов</p>
-             <div class="counter"><?= $_SESSION['counter']; ?> </div>
+             <div class="counter">
+                 <?php echo $counter[0]?>
+             </div>
          </div>
 
          <div class="form">

@@ -1,6 +1,7 @@
 <?php
     session_start();
     require_once 'vendor/connect.php';
+    require_once 'vendor/manage.php';
 
     function get_orders(){
         global $connect;
@@ -97,29 +98,39 @@
         </div>
         <?php endforeach;?>
     </div>
-    <?php
-        /*$query = "SELECT `title`, `date`, `description`, `photo` FROM `orders` WHERE `user_login` = 2";
-        $query2 = "SELECT COUNT(*) FROM `orders` WHERE `user_login` = 2";
-        $result = mysqli_query($connect, $query);
-        if (mysqli_num_rows($result) > 0){
-            $order = mysqli_fetch_array($result);
-            $iter = mysqli_fetch_array(mysqli_query($connect, $query2));
+    <div class="orders">
+        <div class="title">Управление заказами</div>
+        <h3 style="font-size: 35px;">Все заказы</h3>
+        <?php $posts = show_orders(); ?>
+        <?php foreach ($posts as $post): ?>
+            <div class="order">
+                <div class="basic">
+                    <div class="name"> <?= $post['title'] ?> </div>
+                    <div class="date"> <?= $post['date'] ?></div>
+                </div>
+                <div class="description">
+                    <?= $post['description'] ?>
+                </div>
+                <div class="change_cat">
+                    <select name="ch_category">
+                        <option value=""></option>
+                    </select>
+                </div>
+            </div>
+        <?php endforeach;?>
+    </div>
 
-            $count = mysqli_num_rows($result);
-            echo '<div>' . 'num rows ' . $count . '</div>';
-
-            $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
-
-            foreach ($rows as $item) {
-                printf ("%s \n" , $item['title']);
-                printf ("%s \n" , $item['date']);
-                printf ("%s \n" , $item['description']);
-                printf ("%s \n" , $item['photo']);
-            }
-        }
-        else{
-            echo '<div>' . 'в запросе ошибка' . '</div>';
-        }*/
-    ?>
+    <form class="change_cat" action="vendor/change_status.php" enctype="multipart/form-data" method="post">
+        <select name="ch_category" id="status">
+            <?php $all_statuses = show_status(); ?>
+            <?php foreach ($all_statuses as $status): ?>
+                <option value="<?= $status?>"><?= $status?></option>
+            <?php endforeach; ?>
+        </select>
+        <input type="hidden" name="orderId" value="<?= $order[0]['id']?>">
+        <textarea id="comment" style="display: none;" name="comment" cols="30" rows="5" maxlength="1000" class="input" placeholder="Добавьте комментарий"></textarea>
+        <input type="file" name="avatar" style="display: none" id="image">
+        <button type="submit">Сохранить</button>
+    </form>
 </body>
 </html>

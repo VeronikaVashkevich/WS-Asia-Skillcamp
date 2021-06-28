@@ -37,8 +37,8 @@
 .order{
     display: block;
     width: 950px;
-    height: 150px;
-    line-height: 150px;
+    height: 200px;
+    line-height: 200px;
 }
 
 .basic {
@@ -49,13 +49,21 @@
     vertical-align: middle;
 }
 
-.basic .name{
+.title{
+    font-weight: bold;
+    font-size: 40px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.basic .name, .basic .date{
     text-align: left;
 }
 
+
 .description{
     display: inline-block;
-    width: 600px;
+    width: 350px;
     font-size: 25px;
     text-align: left;
     line-height: normal;
@@ -64,8 +72,51 @@
 
 .delete_button{
     display: inline-block;
-    width: 100px;
+    width: 100px;    font-size: 25px;
+    font-weight: bold;
+    line-height: normal;
+    vertical-align: middle;
+}
+
+.change_cat{
+    display: inline-block;
+    width: 250px;
     font-size: 25px;
+    font-weight: bold;
+    line-height: normal;
+    vertical-align: middle;
+}
+
+.save_button{
+    width: 49px;
+    display: inline-block;
+    line-height: normal;
+    vertical-align: middle;
+}
+
+.add_new{
+    margin: 50px auto 20px;
+    font-size: 30px;
+}
+
+.manage{
+    margin: 50px auto;
+    text-align: center;
+    width: 1010px;
+}
+
+.category{
+    width: 60%;
+    text-align: center;
+    font-size: 25px;
+    display: inline-block;
+    height: 100px;
+    line-height: 100px;
+}
+select[name = "ch_category"]{
+    display: inline-block;
+    width: 100px;
+    font-size: 20px;
     font-weight: bold;
     line-height: normal;
     vertical-align: middle;

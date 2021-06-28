@@ -3,6 +3,8 @@ session_start();
 if (!$_SESSION['user']) {
     header('Location: /');
 }
+
+require_once 'vendor/manage.php';
 ?>
 
 <!doctype html>
@@ -28,15 +30,22 @@ if (!$_SESSION['user']) {
             <textarea name="description" cols="30" rows="5" maxlength="1000" class="input"></textarea>
             <label>Категория</label>
             <select name="category" class="categories">
-                <option value="flat">Квартира</option>
-                <option value="house">Дом</option>
-                <option value="room">Комната</option>
-                <option value="penthouse">Пентхаус</option>
+                <?php $all_categories = show_categories(); ?>
+                <?php foreach ($all_categories as $category): ?>
+                <option value="<?= $category['name']?>"><?= $category['name']?></option>
+                <?php endforeach; ?>
             </select>
             <input type="file" name="avatar">
             <br>
             <button type="submit">Создать</button>
+            <?php
+            if($_SESSION['message']){
+                echo '<p class="message">' . $_SESSION['message'] . '</p>';
+            }
+            unset($_SESSION['message']);
+            ?>
         </form>
+
     </div>
 </body>
 </html>

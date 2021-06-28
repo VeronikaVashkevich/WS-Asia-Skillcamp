@@ -10,6 +10,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <title><?= $_SESSION['user']['full_name'] ?> Profile</title>
     <link rel="stylesheet" href="assets/css/main.css">
     <link rel="stylesheet" href="assets/css/profiles_style.css">
@@ -34,7 +36,6 @@
                         <div class="basic">
                             <div class="name"> <?= $post['title'] ?> </div>
                             <div class="date"> <?= $post['date'] ?></div>
-                            <div class="category"></div>
                         </div>
                         <div class="description">
                             <?= $post['description'] ?>
@@ -44,7 +45,6 @@
                                 <input type="hidden" name="id" value="<?= $post['id']?>">
                                 <button type="submit"> Удалить </button>
                             </form>
-                            <a href="vendor/delete.php">Удалить</a>
                         </div>
                     </div>
                 <?php endforeach;?>
